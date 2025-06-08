@@ -1,5 +1,6 @@
 # Medical_Data_Extractor.
 Overview
+
 This Python project extracts structured medical information from PDF documents such as patient medical reports and prescriptions. It automates the process of parsing unstructured text data and retrieving key fields including:
 
 Patient Name
@@ -19,6 +20,7 @@ Doctor’s Name
 The extracted data is saved in both JSON and CSV formats for easy integration with downstream healthcare analytics, record keeping, or automated workflows.
 
 Features
+
 PDF Text Extraction: Utilizes PyMuPDF (fitz) for fast and accurate extraction of text from PDF files.
 
 Natural Language Processing: Employs spaCy for entity recognition and enhanced text parsing.
