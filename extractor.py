@@ -4,17 +4,18 @@ import re
 import json
 import pandas as pd
 
-# Load NLP model
 nlp = spacy.load("en_core_web_sm")
 
 def extract_text_from_pdf(file_path):
+    """Extract text from each page of the PDF."""
     doc = fitz.open(file_path)
     text = ""
     for page in doc:
         text += page.get_text()
     return text
 
-def extract_medical_data(text):
+def extract_data_with_spacy(text):
+    """Extract structured medical data from unstructured text."""
     doc = nlp(text)
     extracted = {
         "Name": None,
@@ -26,6 +27,7 @@ def extract_medical_data(text):
         "Doctor": None
     }
 
+    # Basic regex-based extraction
     name = re.search(r"Name[:\-]?\s*(\w+\s*\w+)", text)
     if name:
         extracted["Name"] = name.group(1)
@@ -42,14 +44,17 @@ def extract_medical_data(text):
     if date:
         extracted["Date"] = date.group(1)
 
+    # Search for medications
     for line in text.split('\n'):
         if re.search(r'\d+mg|\d+ ml|Tablet|Capsule|Injection', line, re.IGNORECASE):
             extracted["Medications"].append(line.strip())
 
+    # Doctor name
     doc_match = re.search(r"Dr\.?\s+\w+\s*\w*", text)
     if doc_match:
         extracted["Doctor"] = doc_match.group(0)
 
+    # Basic diagnosis keyword search
     keywords = ['fever', 'infection', 'pain', 'diabetes', 'hypertension', 'cancer']
     for keyword in keywords:
         if keyword in text.lower():
@@ -58,12 +63,7 @@ def extract_medical_data(text):
     return extracted
 
 def save_data(extracted_data):
-    with open("output.json", "w") as f:
+    """Save the data to both JSON and CSV formats."""
+    with open("output/output.json", "w") as f:
         json.dump(extracted_data, f, indent=4)
-    pd.DataFrame([extracted_data]).to_csv("output.csv", index=False)
-
-if __name__ == "__main__":
-    text = extract_text_from_pdf("sample_medical.pdf")
-    data = extract_medical_data(text)
-    save_data(data)
-    print("✅ Extraction complete! Output saved in output.json and output.csv")
+    pd.DataFrame([extracted_data]).to_csv("output/output.csv", index=False)
