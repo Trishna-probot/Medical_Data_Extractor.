@@ -1,35 +1,72 @@
-# Medical_Data_Extractor.
-Overview
+# 🩺 MedExtract Pro – Intelligent Medical Data Extractor
 
-This Python project extracts structured medical information from PDF documents such as patient medical reports and prescriptions. It automates the process of parsing unstructured text data and retrieving key fields including:
+**MedExtract Pro** is a lightweight, privacy-friendly tool built with **Flask**, **spaCy**, and **PyMuPDF** to extract meaningful patient information from medical reports (PDFs). Whether the report is typed or handwritten, the system intelligently detects and extracts names, dates, diagnosis, medications, and more — exporting the results to both **JSON** and **CSV** formats.
 
-Patient Name
+---
 
-Age
+## ✨ Key Highlights
 
-Gender
+- ✅ Upload **PDF medical reports** (typed or scanned)
+- 🧠 Uses **spaCy NLP** for intelligent entity extraction
+- 🖼️ Integrated **OCR** with `pytesseract` for handwritten reports
+- 📤 Exports to **JSON** and **CSV**
+- 🧾 Professionally styled frontend with **Bootstrap**
+- 🔐 Runs completely **locally** — no internet/data sharing required
 
-Date of Report
+---
 
-Diagnosis keywords (e.g., fever, diabetes)
+## 📸 User Interface Preview
 
-Medications (with dosage details)
+> 🧩 UI: Upload medical report → Extract → Get structured output instantly
 
-Doctor’s Name
+<img src="static/logo.png" width="180" align="right" />
 
-The extracted data is saved in both JSON and CSV formats for easy integration with downstream healthcare analytics, record keeping, or automated workflows.
+| Upload Page | Extracted Result |
+|-------------|------------------|
+| ![Upload Page](https://via.placeholder.com/300x200?text=Upload+Page+Screenshot) | ![Result Page](https://via.placeholder.com/300x200?text=Result+Page+Screenshot) |
 
-Features
+---
 
-PDF Text Extraction: Utilizes PyMuPDF (fitz) for fast and accurate extraction of text from PDF files.
+## ⚙️ Tech Stack
 
-Natural Language Processing: Employs spaCy for entity recognition and enhanced text parsing.
+| Layer      | Tools Used |
+|------------|------------|
+| Backend    | Flask, spaCy, PyMuPDF |
+| Frontend   | HTML5, Bootstrap 5 |
+| OCR Engine | pytesseract, pdf2image |
+| Output     | JSON, CSV |
 
-Regex-Based Data Mining: Uses regular expressions for precise detection of names, dates, ages, genders, medications, and doctor details.
+---
 
-Diagnosis Identification: Searches for common diagnosis keywords within the text.
+## 📁 Directory Structure
 
-Multi-format Output: Exports results in both JSON and CSV formats for flexible data usage.
+medical_data_extractor/
+├── app.py                   # Main Flask app
+├── extractor.py             # PDF reading and NLP logic
+├── requirements.txt         # Required Python packages
+├── vercel.json              # Optional config for Vercel (if deploying)
+│
+├── templates/               # HTML templates (for rendering pages)
+│   ├── index.html           # Upload form page
+│   └── result.html          # Extracted data display
+│
+├── static/                  # Static assets (CSS, JS, images)
+│   └── logo.png             # App logo for navbar
+│
+├── uploads/                 # Uploaded PDF files (runtime)
+│
+├── output.json              # Latest extracted data in JSON
+├── output.csv               # Latest extracted data in CSV
+│
+├── sample_medical.pdf       # Sample typed PDF for testing
+│
+└── README.md                # Project documentation (you’ll generate this now)
 
-Extensible Architecture: Easily extendable to support OCR integration for scanned or handwritten documents.
+## Run the Flask App
 
+python3 app.py
+
+Then visit: http://127.0.0.1:5000
+
+👩‍💻 Author
+Trishna Kumari Paswan
