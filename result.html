@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Report | MedExtract Pro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f4f7;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .navbar {
+            background-color: #006d77;
+        }
+        .navbar-brand {
+            color: white !important;
+        }
+        .card {
+            border-radius: 15px;
+            margin-top: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #006d77;
+            color: white;
+            font-size: 1.2rem;
+        }
+        .footer {
+            margin-top: 50px;
+            background-color: #006d77;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .section-title {
+            font-weight: 600;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <a class="navbar-brand" href="#">MedExtract Pro</a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header text-center">
+            Extracted Patient Details
+        </div>
+        <div class="card-body">
+            <p><strong>Name:</strong> {{ data['Name'] or 'N/A' }}</p>
+            <p><strong>Age:</strong> {{ data['Age'] or 'N/A' }}</p>
+            <p><strong>Gender:</strong> {{ data['Gender'] or 'N/A' }}</p>
+            <p><strong>Date:</strong> {{ data['Date'] or 'N/A' }}</p>
+
+            <div class="section-title">Diagnosis</div>
+            <ul>
+                {% for item in data['Diagnosis'] %}
+                    <li>{{ item }}</li>
+                {% else %}
+                    <li>No diagnosis keywords found.</li>
+                {% endfor %}
+            </ul>
+
+            <div class="section-title">Medications</div>
+            <ul>
+                {% for med in data['Medications'] %}
+                    <li>{{ med }}</li>
+                {% else %}
+                    <li>No medications detected.</li>
+                {% endfor %}
+            </ul>
+
+            <p class="section-title"><strong>Consulting Doctor:</strong> {{ data['Doctor'] or 'N/A' }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>&copy; 2025 MedExtract Pro. For internal medical analysis use only.</p>
+</div>
+
+<!-- Bootstrap Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
