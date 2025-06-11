@@ -15,18 +15,6 @@
 
 ---
 
-## 📸 User Interface Preview
-
-> 🧩 UI: Upload medical report → Extract → Get structured output instantly
-
-<img src="static/logo.png" width="180" align="right" />
-
-| Upload Page | Extracted Result |
-|-------------|------------------|
-| ![Upload Page](https://via.placeholder.com/300x200?text=Upload+Page+Screenshot) | ![Result Page](https://via.placeholder.com/300x200?text=Result+Page+Screenshot) |
-
----
-
 ## ⚙️ Tech Stack
 
 | Layer      | Tools Used |
@@ -41,24 +29,38 @@
 ## 📁 Directory Structure
 
 medical_data_extractor/
+
 ├── app.py                   # Main Flask app
+
 ├── extractor.py             # PDF reading and NLP logic
+
 ├── requirements.txt         # Required Python packages
+
 ├── vercel.json              # Optional config for Vercel (if deploying)
+
 │
 ├── templates/               # HTML templates (for rendering pages)
+
 │   ├── index.html           # Upload form page
+
 │   └── result.html          # Extracted data display
+
 │
 ├── static/                  # Static assets (CSS, JS, images)
+
 │   └── logo.png             # App logo for navbar
+
 │
 ├── uploads/                 # Uploaded PDF files (runtime)
+
 │
 ├── output.json              # Latest extracted data in JSON
+
 ├── output.csv               # Latest extracted data in CSV
+
 │
 ├── sample_medical.pdf       # Sample typed PDF for testing
+
 │
 └── README.md                # Project documentation (you’ll generate this now)
 
