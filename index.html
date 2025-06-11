@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MedExtract Pro | Medical Data Extractor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f8fb;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .navbar {
+            background-color: #006d77;
+        }
+        .navbar-brand, .nav-link, .footer {
+            color: white !important;
+        }
+        .navbar-brand img {
+            height: 36px;
+            margin-right: 10px;
+        }
+        .upload-box {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+        .footer {
+            background-color: #006d77;
+            padding: 10px 0;
+            margin-top: 60px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="{{ url_for('static', filename='medextract_logo.png') }}" alt="Logo">
+            MedExtract Pro
+        </a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 upload-box">
+            <h3 class="text-center mb-4">Upload Medical Report</h3>
+            <form action="/" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <input type="file" name="pdf" accept=".pdf" class="form-control" required>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Extract Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="footer text-white">
+    <p>&copy; 2025 MedExtract Pro | Powered by PyMuPDF, spaCy & Flask</p>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
