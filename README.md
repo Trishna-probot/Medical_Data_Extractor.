@@ -41,14 +41,14 @@ medical_data_extractor/
 │
 ├── templates/               # HTML templates (for rendering pages)
 
-│   ├── index.html           # Upload form page
+│      ├── index.html           # Upload form page
 
-│   └── result.html          # Extracted data display
+│      └── result.html          # Extracted data display
 
 │
-├── static/                  # Static assets (CSS, JS, images)
+|      ── static/                  # Static assets (CSS, JS, images)
 
-│   └── logo.png             # App logo for navbar
+│      └── logo.png             # App logo for navbar
 
 │
 ├── uploads/                 # Uploaded PDF files (runtime)
