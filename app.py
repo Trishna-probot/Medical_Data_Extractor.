@@ -1,3 +1,4 @@
+
 from flask import Flask, request, render_template
 import os
 from extractor import extract_text_from_pdf, extract_data_with_spacy
