@@ -3,7 +3,6 @@ import os
 from extractor import extract_text_from_pdf, extract_data_with_spacy
 import csv
 import json
-
 app = Flask(__name__, static_folder="static", template_folder="templates")
 
 UPLOAD_FOLDER = 'uploads'
